@@ -121,7 +121,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var x = localStorage.getItem('x');
 var xObject = JSON.parse(x);
 var hashMap = xObject || [{
-  logo: './logo/guithub.jpg',
+  logo: 'G',
   url: 'https://github.com/'
 }, {
   logo: 'B',
@@ -130,10 +130,24 @@ var hashMap = xObject || [{
 var $siteList = $('.siteList');
 var $lastLi = $siteList.find('li.last');
 
+var simplify = function simplify(url) {
+  return url.replace('https://', '').replace('http://', '').replace('www.', '').replace('.com', '').replace(/\/.*/, '');
+};
+
 var render = function render() {
   $siteList.find('li:not(.last)').remove();
-  hashMap.forEach(function (node) {
-    var $li = $("<li>\n        <a href=\"".concat(node.url, "\">\n                        <div class=\"site\">\n                            <div class=\"logo\">\n                                ").concat(node.logo[0], "\n                            </div>\n                            <div class=\"link\">").concat(node.url, "</div>\n                        </div>\n                    </a>\n        </li>")).insertBefore($lastLi);
+  hashMap.forEach(function (node, index) {
+    var $li = $("<li>\n                        <div class=\"site\">\n                            <div class=\"logo\">".concat(node.logo, "</div>\n                            <div class=\"link\">").concat(simplify(node.url), "</div>\n                            <div class=\"close\">\n                            <svg class=\"icon2\">\n                                    <use xlink:href=\"#icon-close\"></use>\n                                </svg>\n                            </div>\n                        </div>\n        </li>")).insertBefore($lastLi);
+    $li.on('click', function () {
+      window.open(node.url);
+    });
+    $li.on('click', '.close', function (e) {
+      console.log('这里');
+      e.stopPropagation(); //阻止冒泡
+
+      hashMap.splice(index, 1);
+      render();
+    });
   });
 };
 
@@ -141,13 +155,12 @@ render();
 $('.addButton').on('click', function () {
   var url = window.prompt('请输入网址');
 
-  if (url.indexOf !== 0) {
+  if (url.indexOf('http') !== 0) {
     url = 'https://' + url;
   }
 
   hashMap.push({
-    logo: url[0],
-    logoType: 'text',
+    logo: simplify(url)[0].toUpperCase(),
     url: url
   });
   render();
@@ -185,7 +198,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51215" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65288" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
