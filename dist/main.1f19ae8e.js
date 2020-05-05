@@ -142,7 +142,6 @@ var render = function render() {
       window.open(node.url);
     });
     $li.on('click', '.close', function (e) {
-      console.log('这里');
       e.stopPropagation(); //阻止冒泡
 
       hashMap.splice(index, 1);
@@ -170,6 +169,19 @@ window.onbeforeunload = function () {
   var string = JSON.stringify(hashMap);
   localStorage.setItem('x', string);
 };
+
+$(document).on('keypress', function (e) {
+  var key = e.key;
+
+  for (var i = 0; i < hashMap.length; i++) {
+    if (hashMap[i].logo.toLowerCase() === key) {
+      window.open(hashMap[i].url);
+    }
+  }
+});
+$(document).on('keypress', '.searchFrom > input', function (e) {
+  e.stopPropagation();
+});
 },{}],"../../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -198,7 +210,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65288" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63683" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

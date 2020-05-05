@@ -21,16 +21,36 @@
             fill: currentColor;
             overflow: hidden;
         }
+
+        .icon3 {
+            width: 25px;
+            height: 25px;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .icon3:hover {
+            width: 35px;
+            height: 35px;
+        }
     </style>
     <title>前航</title>
 </head>
 
 <body>
     <header class="globalHeader">
+
         <form class="searchFrom" method="get" action="https://www.baidu.com/s">
             <input name="wd" type="text">
-            <button type="submit">搜索</button>
+            <button type="submit">
+                <svg class="icon3" aria-hidden="true">
+                    <use xlink:href="#icon-sousuo"></use>
+                </svg>
+            </button>
         </form>
+        <img src="./logo/cat.jpg" alt="" height="80px" class="cat">
     </header>
     <main class="globalMain">
         <ul class="siteList">
@@ -41,13 +61,13 @@
                             <use xlink:href="#icon-add"></use>
                         </svg>
                     </div>
-                    <div class="text">新增网站</div>
+                    <div class="text">add web</div>
                 </div>
             </li>
         </ul>
     </main>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-    <script src="//at.alicdn.com/t/font_1796172_qcv3phpbz0c.js"></script>
+    <script src="//at.alicdn.com/t/font_1796172_in6acyt88dq.js"></script>
     <script src="./main.js"></script>
 </body>
 

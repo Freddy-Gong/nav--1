@@ -29,7 +29,6 @@ const render = () => {
         </li>`).insertBefore($lastLi)
         $li.on('click', () => { window.open(node.url) })
         $li.on('click', '.close', (e) => {
-            console.log('这里')
             e.stopPropagation()//阻止冒泡
             hashMap.splice(index, 1)
             render()
@@ -51,3 +50,14 @@ window.onbeforeunload = () => {
     const string = JSON.stringify(hashMap)
     localStorage.setItem('x', string)
 }
+$(document).on('keypress', (e) => {
+    const { key } = e
+    for (let i = 0; i < hashMap.length; i++) {
+        if (hashMap[i].logo.toLowerCase() === key) {
+            window.open(hashMap[i].url)
+        }
+    }
+})
+$(document).on('keypress', '.searchFrom > input', (e) => {
+    e.stopPropagation()
+})
