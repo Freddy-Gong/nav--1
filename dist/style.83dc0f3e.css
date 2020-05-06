@@ -152,7 +152,7 @@ img{
 
 .siteList .addButton{
     background: white;
-    width: 160px;
+    width: 152px;
     height: 137px;    
     display: flex;
     justify-content: center;
@@ -162,6 +162,11 @@ img{
     border: none;
     border-radius: 20px;
     transition: transform 0.5s;
+}
+@media(min-width:500px){
+    .siteList .addButton{
+        width: 160px;
+    }
 }
 .siteList .addButton:hover{
     transform: translateY(-10px);
@@ -175,4 +180,4 @@ img{
 
 
 
-/*# sourceMappingURL=style.f8976dc1.css.map */
+/*# sourceMappingURL=style.83dc0f3e.css.map */
