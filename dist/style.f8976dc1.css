@@ -139,12 +139,17 @@ img{
     position: absolute;
     top:5px;
     right:5px;
-    display: none;
     cursor: default;
 }
-.siteList .site:hover > .close{
-    display:block;
+@media(min-width:500px){
+    .siteList .site > .close{
+        display:none
+    }
+    .siteList .site:hover > .close{
+        display:block;
+    }
 }
+
 .siteList .addButton{
     background: white;
     width: 160px;
@@ -170,4 +175,4 @@ img{
 
 
 
-/*# sourceMappingURL=style.622cf51e.css.map */
+/*# sourceMappingURL=style.f8976dc1.css.map */
